@@ -30,8 +30,6 @@ def update_policy(env, policy, q_func, state):
             q_val = q_func[state_action]
             max_dict[(action_x, action_y)] = q_val
     best_action = max(max_dict, key=max_dict.get)
-    # if best_action != (0, 0):
-        # print(f'{best_action}, val: {max_dict[best_action]}')
     policy[state] = best_action
     return best_action
 
@@ -42,7 +40,6 @@ def examine_policy(env, policy):
     state = env.reset()
     for iters in range(1000):
         iters += 1
-        # action = (random.choice(env.get_actions()), random.choice(env.get_actions()))
         action = policy[state]
         new_state, reward, done = env.step(state, action)
         episode_list.append((state, action, reward, done))
